@@ -1,14 +1,12 @@
-from django.shortcuts import render
+from django.views.generic import ListView, DetailView
 from .models import Post
 
 
-def index(request):
-    posts = Post.objects.all().order_by ('-pk')
+class PostList(ListView):
+    model = Post
+    ordering = '-pk'
+    template_name = 'market_page/post_list.html'
 
-    return render(
-        request,
-        'market_page/index.html',
-        {
-            'posts': posts,
-        }
-    )
+
+class PostDetail(DetailView):
+    model = Post
