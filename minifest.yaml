@@ -1,0 +1,7 @@
+---
+applications:
+- name: market-son
+  buildpack: paketo-buildpacks/python
+  memory: 256M
+  instances: 1
+  command: waitress-serve --port=8080 market.wsgi:application

@@ -25,7 +25,7 @@ SECRET_KEY = 'django-insecure-^j#)#34ko8(v@)@(=*hopp)@0&^mn2sa-i=+ftq@$hs7^e@n2v
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['*']
 
 
 # Application definition
@@ -51,6 +51,7 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'whitenoise.middleware.WhiteNoiseMiddleware',
 ]
 
 ROOT_URLCONF = 'market.urls'
@@ -131,3 +132,11 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 # channels
 ASGI_APPLICATION = 'market.routing.application'
+
+# Static files (CSS, JavaScript, Images)
+# https://docs.djangoproject.com/en/3.2/howto/static-files/
+
+STATIC_URL = '/static/'
+STATIC_ROOT = os.path.join(BASE_DIR, "static")
+STATICFILES_STORAGE = 'whitenoise.storage.CompressedStaticFilesStorage'
+
