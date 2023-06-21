@@ -9,6 +9,7 @@ class Auction_Post(models.Model):
     min_price = models.IntegerField()
     unit_price = models.IntegerField()
 
+    head_image = models.ImageField(upload_to="blog/images/%Y/%m/%d/",blank=True)
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
 
