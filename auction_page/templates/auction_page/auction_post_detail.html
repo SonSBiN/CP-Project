@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <title>{{ auction_post.title }} - market</title>
+</head>
+<body>
+<nav>
+    <a href = '/auction'>Auction</a>
+</nav>
+<h2>글 상세 페이지</h2>
+<h1>{{ auction_post.title }}</h1>
+<h4>{{ auction_post.created_at }}</h4>
+<p>{{ auction_post.content }}</p>
+<p>시작 가격:
+    <div id = 'min_price'>{{ auction_post.min_price }}
+    </div>
+</p>
+<p>입찰시 오르는 가격:
+    <div id = 'unit_price'>{{ auction_post.unit_price }}
+    </div>
+</p>
+<p> 현재 가격</p>
+<div id = 'price'>{{ auction_post.min_price }}</div>
+<button onclick = 'inc()'>현재 가격 입찰하기</button>
+<div id = 'state'>경매 참여중이지 않음</div>
+
+<script>
+    let price = 0;
+    function inc(){
+        let num1 = document.getElementById('min_price').innerText;
+        if (price < num1){
+            price = num1;
+        }
+        let num2 = document.getElementById('unit_price').innerText;
+        price = parseInt(price) + parseInt(num2);
+        document.getElementById('price').innerText = price;
+        document.getElementById('state').innerText = "경매 참여중";
+    }
+</script>
+<hr/>
+</nav>
+</body>
+</html>
